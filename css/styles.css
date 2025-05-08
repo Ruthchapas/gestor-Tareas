@@ -79,7 +79,19 @@ button[type='reset']
     font-weight: bold;
     transition: background-color 0.3s;
 }
+.cancelar {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-left: 10px;
+    background-color: #684768;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
 
+.cancelar:hover {
+    background-color: #aaa;
+}
 button:hover {
     opacity: 0.9;
 }
@@ -331,4 +343,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .marcador-recuento li:last-child {
     border-bottom: none;
+}
+@media (max-width: 600px) {
+    .marcador-recuento {
+        display: none;
+    }
 }

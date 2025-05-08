@@ -73,6 +73,7 @@ $recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
 
                         <div>
                             <button type="submit">Actualizar</button>
+                            <a href="index_gestor.php" class="cancelar">Cancelar</a>
                         </div>
                     </fieldset>
                 </form>
