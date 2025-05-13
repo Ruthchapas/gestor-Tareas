@@ -1,5 +1,6 @@
 <?php
 require_once "connexion.php";
+session_start();
 
 // SELECT
 $select = "SELECT * FROM tareas ORDER BY fecha_inicio ASC";
@@ -20,12 +21,12 @@ $recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
     <title>nimaList</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="icon/list_task_to_do_list_icon_146882.svg" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <h1>minimaList</h1>
+    <header >
+        <h1 >minimaList</h1>
     </header>
     <div class="marcador-recuento">
     <h4>Recuento</h4>
@@ -37,11 +38,17 @@ $recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
     <main>
-        <section>
+        <section >
             <?php if ($_GET): ?>
                 <h2>Edita tu tarea</h2>
-                <form action="update_tareas.php" method="post">
+                <form  action="update_tareas.php" method="post">
                     <fieldset>
+                        <!--  Token -->
+                        <input type="hidden" name="session-token" value="<?= $_SESSION['session-token'] ?>">
+                        <!-- Honeypot -->
+                        <input type="text" name="web" style="display:none">
+
+                        
                         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
                         <div>
                             <label for="titulo">Título tarea:</label>
@@ -80,8 +87,12 @@ $recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
                 </form>
             <?php else: ?>
                 <h2>Introduce tu tarea</h2>
-                <form action="insert_tareas.php" method="post">
+                <form  action="insert_tareas.php" method="post">
                     <fieldset>
+                         <!--  Token -->
+                        <input type="hidden" name="session-token" value="<?= $_SESSION['session-token'] ?>">
+                        <!-- Honeypot -->
+                        <input type="text" name="web" style="display:none">
                         <div>
                             <label for="titulo">Título tarea:</label>
                             <input type="text" name="titulo" id="titulo">

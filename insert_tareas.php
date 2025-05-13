@@ -1,5 +1,15 @@
 <?php
 require_once "connexion.php";
+session_start();
+
+if (
+    !isset($_POST['session-token']) ||
+    $_POST['session-token'] !== $_SESSION['session-token'] ||
+    !empty($_POST['web']) 
+) {
+    die("Petición rechazada por seguridad.");
+}
+
 
 if ($_POST) {
     $titulo = $_POST['titulo'];

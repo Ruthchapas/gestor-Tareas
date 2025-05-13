@@ -319,7 +319,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-family: 'Poppins', sans-serif;
     width: 180px;
     z-index: 1000;
-}
+  
+        
+    }
+    
+
 
 .marcador-recuento h4 {
     margin: 0 0 8px 0;
