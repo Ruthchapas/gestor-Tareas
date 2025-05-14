@@ -11,14 +11,20 @@
 body {
     background-color: #fafafa;
     color: #333;
+    font-family: 'Lato', Arial, sans-serif;;
 }
 
-h1 {
-    text-align: center;
-    margin: 2rem 0;
-    font-size: 2.8rem;
+ /* h1 {
+    font-size: 3rem;
+    font-weight: 800;
     color: #5c5470;
-}
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    letter-spacing: 1.5px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: lowercase; */
+/* } */
 
 main {
     max-width: 1500px;
@@ -93,7 +99,85 @@ button:hover {
     transform: scale(1.03);
     opacity: 0.95;
 }
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5e8ff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    position: relative;
+}
 
+.nav-left ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-left li {
+    display: inline;
+}
+
+.nav-left a {
+    text-decoration: none;
+    color: white;
+    background-color: #5c5470;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.nav-left a:hover {
+    background-color: #776a8a;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.titulo-principal h1{
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #5c5470;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1.5px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+.nav-right {
+    font-size: 1rem;
+    color: #5c5470;
+    font-weight: 500;
+}
+
+/* "Hola, usuario" */
+.usuario {
+    color: #5c5470;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Título principal */
+.titulo-principal{
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #5c5470;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1.5px;
+    font-family: 'Poppins', sans-serif;
+    margin: 2rem auto;
+    text-align: center;
+    text-transform: none;
+}
 .cancelar {
     display: inline-block;
     padding: 0.7rem 1.2rem;

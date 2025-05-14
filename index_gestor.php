@@ -1,18 +1,33 @@
 <?php
 require_once "connexion.php";
-session_start();
 
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: LOGIN/index_user.php');
+    exit();
+}
 // SELECT
-$select = "SELECT * FROM tareas ORDER BY fecha_inicio ASC";
+$id_usuario = $_SESSION['id_usuario'];
+$select_recuento = "SELECT estado, COUNT(id_tarea) AS total 
+                    FROM tareas 
+                    WHERE id_usuario = :id_usuario 
+                    GROUP BY estado";
+
+$preparacion_recuento = $conn->prepare($select_recuento);
+$preparacion_recuento->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+$preparacion_recuento->execute();
+
+$recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
+
+$id_usuario = $_SESSION['id_usuario'];
+$select = "SELECT * FROM tareas WHERE id_usuario = :id_usuario ORDER BY fecha_inicio ASC";
 $preparacion = $conn->prepare($select);
+$preparacion->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
 $preparacion->execute();
 $array_filas = $preparacion->fetchAll();
 
-$select_recuento = "SELECT estado, COUNT(id_tarea) AS total FROM tareas GROUP BY estado";
-$preparacion_recuento = $conn->prepare($select_recuento);
-$preparacion_recuento->execute();
-$recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,17 +40,29 @@ $recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
     <link rel="shortcut icon" href="icon/list_task_to_do_list_icon_146882.svg" type="image/x-icon">
 </head>
 <body>
-    <header >
-        <h1 >minimaList</h1>
-    </header>
-    <div class="marcador-recuento">
-    <h4>Recuento</h4>
-    <ul>
-        <?php foreach ($recuento as $estado): ?>
-            <li><strong><?= ucfirst($estado['estado']) ?>:</strong> <?= $estado['total'] ?></li>
-        <?php endforeach; ?>
-    </ul>
-</div>
+   <header class="header-bar">
+    <div class="nav-left">
+        <ul>
+            <li><a href="LOGIN/crear_cuenta.php">Crear cuenta</a></li>
+            <li><a href="LOGIN/index_user.php">Cerrar sesión</a></li>
+        </ul>
+    </div>
+    <div class="nav-center">
+        <h1 class="titulo-principal">minimaList</h1>
+    </div>
+    <div class="nav-right">
+        <span class="usuario">Hola, <?= $_SESSION['usuario'] ?></span>
+    </div>
+</header>
+
+        <div class="marcador-recuento">
+            <h4>Recuento</h4>
+            <ul>
+                <?php foreach ($recuento as $estado): ?>
+                    <li><strong><?= ucfirst($estado['estado']) ?>:</strong> <?= $estado['total'] ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
 
     <main>
         <section >
@@ -89,9 +116,9 @@ $recuento = $preparacion_recuento->fetchAll(PDO::FETCH_ASSOC);
                 <h2>Introduce tu tarea</h2>
                 <form  action="insert_tareas.php" method="post">
                     <fieldset>
-                         <!--  Token -->
-                        <input type="hidden" name="session-token" value="<?= $_SESSION['session-token'] ?>">
-                        <!-- Honeypot -->
+                         <!--  Token -->                       
+                           <input type="hidden" name="session-token" value="<?= $_SESSION["session-token"] ?>">                       
+                         <!-- Honeypot -->
                         <input type="text" name="web" style="display:none">
                         <div>
                             <label for="titulo">Título tarea:</label>

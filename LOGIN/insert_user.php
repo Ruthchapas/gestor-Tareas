@@ -15,6 +15,8 @@ require_once 'pdo_bind_connexion.php';
         header ('Location: index_user.php');
         exit();
     }
+
+
     // Limpiar y escapar datos
 $usuario = htmlentities(trim($_POST['usuario']), ENT_QUOTES, 'UTF-8');
 $password = trim($_POST['password']);
@@ -86,9 +88,17 @@ $stmt->bindParam(':apellidos', $apellidos, PDO::PARAM_STR);
 $stmt->bindParam(':password', $hash, PDO::PARAM_STR);
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+
 $stmt->execute();
 
 
-echo "Usuario insertado correctamente";
 
-header('Location: index.php');
+// Obtener el ID del usuario recién insertado
+$id_usuario = $pdo->lastInsertId();
+
+// Guardar datos en sesión
+$_SESSION['usuario'] = $usuario;
+$_SESSION['id_usuario'] = $id_usuario;
+
+// Redirigir al panel del usuario
+header('Location: ../index_gestor.php');

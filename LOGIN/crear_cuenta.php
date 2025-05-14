@@ -6,12 +6,15 @@ require_once 'pdo_bind_connexion.php';
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include_once 'etiquetas_meta.php'; ?>
+    <?php include_once '../etiquetas_meta.php'; ?>
     <link rel="stylesheet" href="CSS2/login.css">
     <title>Crea tu usuario</title>
 </head>
 <body>
-    <main>
+    <header>
+          <h1 >minimaList</h1>
+    </header>
+    <main class="index-main">
         <form action="insert_user.php" method="post">
             <fieldset>
                     <h1>Crear cuenta</h1>
@@ -57,7 +60,7 @@ require_once 'pdo_bind_connexion.php';
                     <button type="submit">Enviar datos</button>
                     <button type="reset">Borrar</button>
                 </div>
-                <a href="index.php">Volver</a>
+                <a href="index_user.php">Volver</a>
 
             </fieldset>
             

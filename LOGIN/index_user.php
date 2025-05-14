@@ -12,23 +12,16 @@ $_SESSION['user_inexistente'] = $_SESSION['user_inexistente'] ?? false;
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include_once '../etiquetas_meta.php'; ?>
     <title>MinimaList - Login</title>
     <link rel="stylesheet" href="css2/login.css">
 </head>
 <body>
     <header>
-        <nav class="index-nav">
-            <ul>
-                <li><a href="crear_cuenta.php">Crear cuenta</a></li>
-                <li><a href="index.php">Iniciar sesión</a></li>
-            </ul>
-        </nav>
+       <h1 >minimaList</h1>
     </header>
 
     <main class="index-main">
-        <dialog id="login" open>
             <form action="login.php" method="post">
                 <fieldset>
                     <h1>Iniciar sesión</h1>
@@ -57,12 +50,8 @@ $_SESSION['user_inexistente'] = $_SESSION['user_inexistente'] ?? false;
                         <button type="reset">Borrar</button>
                     </div>
 
-                    <div>
-                        <a href="index.php">Volver</a>
-                    </div>
                 </fieldset>
             </form>
-        </dialog>
     </main>
 </body>
 </html>

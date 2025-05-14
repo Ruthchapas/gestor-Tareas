@@ -1,6 +1,6 @@
 <?php
 // Fichero de conexión : pdo_bind_connection.php
-$server_name = "127.0.0.1";
+
 $host = 'localhost';
     // BBDD a la que nos vamos a conectar
 $dbname ="gestor_tiempo";
