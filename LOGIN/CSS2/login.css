@@ -38,6 +38,14 @@ h1 {
     font-size: 2.8rem;
     color: #5c5470;
 }
+.enlace{
+    a{
+        text-decoration: none;
+    color: inherit;
+
+    }
+    
+}
 
 .index-nav ul {
     display: flex;

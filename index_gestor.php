@@ -117,7 +117,7 @@ $array_filas = $preparacion->fetchAll();
                 <form  action="insert_tareas.php" method="post">
                     <fieldset>
                          <!--  Token -->                       
-                           <input type="hidden" name="session-token" value="<?= $_SESSION["session-token"] ?>">                       
+                           <!-- <input type="hidden" name="session-token" value="<?= $_SESSION["session-token"] ?>">                        -->
                          <!-- Honeypot -->
                         <input type="text" name="web" style="display:none">
                         <div>

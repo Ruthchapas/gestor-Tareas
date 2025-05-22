@@ -11,8 +11,8 @@ require_once 'pdo_bind_connexion.php';
     <title>Crea tu usuario</title>
 </head>
 <body>
-    <header>
-          <h1 >minimaList</h1>
+    <header class="enlace">
+          <a href="../inicio.php"><h1 >minimaList</h1></a>
     </header>
     <main class="index-main">
         <form action="insert_user.php" method="post">

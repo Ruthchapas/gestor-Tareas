@@ -17,8 +17,8 @@ $_SESSION['user_inexistente'] = $_SESSION['user_inexistente'] ?? false;
     <link rel="stylesheet" href="css2/login.css">
 </head>
 <body>
-    <header>
-       <h1 >minimaList</h1>
+    <header class="enlace">
+       <a href="../inicio.php"><h1 >minimaList</h1></a>
     </header>
 
     <main class="index-main">
